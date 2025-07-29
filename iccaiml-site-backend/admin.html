@@ -18,6 +18,7 @@
     .logout:hover { background: #2ca6e0; color: #fff; }
     #login-box { background: #ffffff; }
     #login-error { color: #e00; }
+    html, body { min-height: 100vh; height: auto; overflow-x: hidden; }
   </style>
 </head>
 <body>
@@ -39,6 +40,7 @@
         <label>Title <input name="title" required></label>
         <label>Description <textarea name="description" required></textarea></label>
         <label>Image URL <input name="image" required></label>
+        <small>Use a relative path like <b>assets/speakers/your-image.jpg</b> or a full URL (http...)</small>
         <button type="submit">Add Speaker</button>
       </form>
       <div id="speakers-list"></div>
@@ -56,6 +58,7 @@
       <h2>Gallery</h2>
       <form id="gallery-form">
         <label>Image URL <input name="url" required></label>
+        <small>Use a relative path like <b>assets/images/your-image.jpg</b> or a full URL (http...)</small>
         <label>Alt Text <input name="alt" required></label>
         <button type="submit">Add Image</button>
       </form>

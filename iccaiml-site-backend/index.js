@@ -12,6 +12,11 @@ function writeDB(data) {
   fs.writeFileSync(DB_PATH, JSON.stringify(data, null, 2));
 }
 
+function getImageUrl(url) {
+  if (url.startsWith('http')) return url;
+  return url.startsWith('assets/') ? url : 'assets/' + url;
+}
+
 const app = express();
 const PORT = 3001;
 

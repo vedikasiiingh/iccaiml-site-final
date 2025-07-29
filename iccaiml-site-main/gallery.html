@@ -27,6 +27,9 @@
       },
     }
   </script>
+  <style>
+    html, body { min-height: 100vh; height: auto; overflow-x: hidden; }
+  </style>
 </head>
 <body class="bg-primary text-white">
   <!-- Sticky Header/Navbar -->
@@ -68,11 +71,15 @@
     </div>
   </section>
   <script>
+    function getImageUrl(url) {
+      if (url.startsWith('http')) return url;
+      return url.startsWith('assets/') ? url : 'assets/' + url;
+    }
     fetch('http://localhost:3001/api/gallery')
       .then(res => res.json())
       .then(images => {
         const list = document.getElementById('gallery-list');
-        list.innerHTML = images.map(img => `<img src='${img.url}' alt='${img.alt}' class='w-full h-64 object-cover rounded shadow-md' />`).join('');
+        list.innerHTML = images.map(img => `<img src='${getImageUrl(img.url)}' alt='${img.alt}' class='w-full h-64 object-cover rounded shadow-md' />`).join('');
       });
   </script>
 

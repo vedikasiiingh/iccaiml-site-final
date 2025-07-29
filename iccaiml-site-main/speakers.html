@@ -26,6 +26,9 @@
       },
     }
   </script>
+  <style>
+    html, body { min-height: 100vh; height: auto; overflow-x: hidden; }
+  </style>
 </head>
 <body class="bg-primary text-white">
   <!-- Header -->
@@ -66,13 +69,17 @@
     <p class="mt-8 text-gray-700 text-center">More speakers will be announced soon.</p>
   </section>
   <script>
+    function getImageUrl(url) {
+      if (url.startsWith('http')) return url;
+      return url.startsWith('assets/') ? url : 'assets/' + url;
+    }
     fetch('http://localhost:3001/api/speakers')
       .then(res => res.json())
       .then(speakers => {
         const list = document.getElementById('speakers-list');
         list.innerHTML = speakers.map(s => `
           <div class="bg-white rounded-lg shadow p-6 flex flex-col items-center border-t-4 border-primary">
-            <img src="${s.image}" alt="${s.name}" class="h-24 w-24 rounded-full mb-4 object-cover">
+            <img src="${getImageUrl(s.image)}" alt="${s.name}" class="h-24 w-24 rounded-full mb-4 object-cover">
             <h3 class="font-semibold text-lg text-primary">${s.name}</h3>
             <p class="text-sm text-primary mb-2">${s.affiliation}</p>
             <p class="text-gray-700 text-center font-semibold mb-2">${s.title}</p>
