@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <base href="/iccaiml-site/">
+  <title> Home | ICCAIML </title>
+  <meta name="description" content="Home for ICCAIML ." />
+  <link rel="icon" href="assets/logo.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              DEFAULT: '#0a2342', // dark blue
+              dark: '#07172b',   // even deeper blue
+            },
+            secondary: {
+              DEFAULT: '#2ca6e0', // light blue
+            },
+            white: '#ffffff',
+          },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="bg-primary text-white">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-secondary shadow">
+    <nav class="container mx-auto flex items-center justify-between py-4 px-4">
+      <div class="flex items-center gap-2">
+        <img src="assets/logo.png" alt="ICCAIML Logo" class="h-10 w-10 object-contain">
+        <span class="font-bold text-xl tracking-tight text-primary">ICCAIML </span>
+      </div>
+      <ul class="hidden md:flex gap-6 font-medium">
+        <li><a href="index.html" class="hover:text-primary text-primary">Home</a></li>
+        <li><a href="about.html" class="hover:text-primary">About</a></li>
+        <li><a href="committee.html" class="hover:text-primary">Committee</a></li>
+        <li><a href="speakers.html" class="hover:text-primary">Speakers</a></li>
+        <li><a href="call-for-papers.html" class="hover:text-primary">Call for Papers</a></li>
+        <li><a href="registration.html" class="hover:text-primary ">Registration</a></li>
+        <li><a href="schedule.html" class="hover:text-primary">Schedule</a></li>
+        <li><a href="contact.html" class="hover:text-primary">Contact</a></li>
+        <li><a href="gallery.html" class="hover:text-primary">Gallery</a></li>
+      </ul>
+      <button class="md:hidden p-2" aria-label="Open menu">
+        <svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </nav>
+  </header>
+
+   <!-- Hero -->
+  <section class="bg-gradient-to-br from-primary to-secondary py-16 text-center">
+    <div class="container mx-auto px-4">
+      <h1 class="text-4xl md:text-5xl font-extrabold mb-4 text-primary drop-shadow">Bridges to the Future</h1>
+      <p class="text-lg md:text-xl mb-6 text-primary">About the International Conference on Contemporary Advances in AI & ML</p>
+    </div>
+  </section>
+
+  <!-- Full-width Image Section -->
+  <section class="w-full">
+    <img src="assets/images/auditorium.jpg" alt="ICCAIML Auditorium" class="w-full h-64 object-cover">
+  </section>
+  
+
+  <!-- Speakers Section -->
+  
+  <section class="container mx-auto px-4 py-12">
+    <h2 class="text-2xl font-bold mb-4 text-primary">Keynote Speakers</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+  
+      <!-- Dr. Sandeep Joshi -->
+      <div class="bg-white rounded-lg shadow p-6 flex flex-col items-center border-t-4 border-primary max-w-xs w-full">
+        <img src="assets/speakers/sandeep-joshi.jpg" alt="Dr. Sandeep Joshi" class="h-24 w-24 rounded-full mb-4 object-cover">
+        <h3 class="font-semibold text-lg text-primary text-center">Dr. Sandeep Joshi</h3>
+        <p class="text-sm text-primary mb-2 text-center">Manipal University Jaipur, India</p>
+        <p class="text-gray-700 text-center font-semibold">Image security through authentication using Watermark</p>
+      </div>
+  
+      <!-- Dr. Prof. Igor Kotenko -->
+      <div class="bg-white rounded-lg shadow p-6 flex flex-col items-center border-t-4 border-primary max-w-xs w-full">
+        <img src="assets/speakers/igor-kotenko.jpg" alt="Dr. Prof. Igor Kotenko" class="h-24 w-24 rounded-full mb-4 object-cover">
+        <h3 class="font-semibold text-lg text-primary text-center">Dr. Prof. Igor Kotenko</h3>
+        <p class="text-sm text-primary mb-2 text-center">St. Petersburg Federal Research Center of the Russian Academy of Sciences, and ITMO University, St. Petersburg, Russia</p>
+        <p class="text-gray-700 text-center font-semibold">Intelligent Situational Awareness for Cyber Security: Models, Techniques and Applications</p>
+      </div>
+  
+    </div>
+  
+    <p class="mt-8 text-gray-700 text-center">More speakers will be announced soon.</p>
+  </section>
+  
+
+  <!-- Schedule Section -->
+   <section class="container mx-auto px-4 py-12">
+   <h2 class="text-2xl font-bold mb-4 text-primary">Event Schedule</h2> 
+    <div class="flex flex-col md:flex-row justify-center gap-8">
+      <div class="bg-orange-50 rounded-lg p-6 flex-1 border-l-4 border-primary">
+        <h3 class="font-semibold mb-2 text-primary">Day 1: August 10</h3>
+        <ul class="text-sm text-gray-700 list-disc list-inside">
+          <li>Opening Ceremony</li>
+          <li>Keynote Talks</li>
+          <li>Paper Presentations</li>
+        </ul>
+      </div>
+      <div class="bg-orange-50 rounded-lg p-6 flex-1 border-l-4 border-primary">
+        <h3 class="font-semibold mb-2 text-primary">Day 2: August 11</h3>
+        <ul class="text-sm text-gray-700 list-disc list-inside">
+          <li>Workshops</li>
+          <li>Panel Discussions</li>
+          <li>Poster Sessions</li>
+        </ul>
+      </div>
+      <div class="bg-orange-50 rounded-lg p-6 flex-1 border-l-4 border-primary">
+        <h3 class="font-semibold mb-2 text-primary">Day 3: August 12</h3>
+        <ul class="text-sm text-gray-700 list-disc list-inside">
+          <li>Industry Talks</li>
+          <li>Awards & Closing</li>
+        </ul>
+      </div>
+    </div>
+    <p class="mt-8 text-gray-700 text-center">Full schedule and session details will be announced soon.</p>
+  </section>
+  
+
+  <!-- Footer -->
+  <footer class="bg-primary text-white py-8 mt-12">
+    <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+      <div class="mb-4 md:mb-0">
+        <img src="assets/logo.png" alt="ICCAIML Logo" class="h-8 inline-block mr-2">
+        <span class="font-semibold">ICCAIML </span>
+      </div>
+      <div class="text-sm">&copy; ICCAIML. All rights reserved.</div>
+      <div class="flex gap-4 mt-2 md:mt-0">
+        <a href="contact.html" class="hover:underline">Contact</a>
+        <a href="https://maps.google.com" target="_blank" rel="noopener" class="hover:underline">Venue</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

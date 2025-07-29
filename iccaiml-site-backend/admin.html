@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel | ICCAIML</title>
+  <style>
+    body { font-family: sans-serif; background: #0a2342; margin: 0; }
+    .container { max-width: 800px; margin: 2rem auto; background: #ffffff; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 8px #0001; }
+    h1, h2 { color: #0a2342; }
+    .section { margin-bottom: 2rem; }
+    label { display: block; margin-top: 1rem; color: #0a2342; }
+    input, textarea { width: 100%; padding: 0.5rem; margin-top: 0.25rem; border: 1px solid #2ca6e0; border-radius: 4px; background: #f4faff; color: #0a2342; }
+    button { background: #2ca6e0; color: #fff; border: none; padding: 0.5rem 1rem; border-radius: 4px; margin-top: 1rem; cursor: pointer; transition: background 0.2s; }
+    button:hover { background: #0a2342; }
+    .item { border-bottom: 1px solid #eee; padding: 0.5rem 0; }
+    .logout { float: right; background: #0a2342; color: #fff; }
+    .logout:hover { background: #2ca6e0; color: #fff; }
+    #login-box { background: #ffffff; }
+    #login-error { color: #e00; }
+  </style>
+</head>
+<body>
+  <div class="container" id="login-box">
+    <h1>Admin Login</h1>
+    <label>Username <input id="admin-username" type="text"></label>
+    <label>Password <input id="admin-password" type="password"></label>
+    <button onclick="login()">Login</button>
+    <div id="login-error" style="color:red;"></div>
+  </div>
+  <div class="container" id="admin-panel" style="display:none;">
+    <button class="logout" onclick="logout()">Logout</button>
+    <h1>Admin Panel</h1>
+    <div class="section">
+      <h2>Speakers</h2>
+      <form id="speaker-form">
+        <label>Name <input name="name" required></label>
+        <label>Affiliation <input name="affiliation" required></label>
+        <label>Title <input name="title" required></label>
+        <label>Description <textarea name="description" required></textarea></label>
+        <label>Image URL <input name="image" required></label>
+        <button type="submit">Add Speaker</button>
+      </form>
+      <div id="speakers-list"></div>
+    </div>
+    <div class="section">
+      <h2>Schedule</h2>
+      <form id="schedule-form">
+        <label>Day <input name="day" required></label>
+        <label>Event <input name="event" required></label>
+        <button type="submit">Add Schedule Item</button>
+      </form>
+      <div id="schedule-list"></div>
+    </div>
+    <div class="section">
+      <h2>Gallery</h2>
+      <form id="gallery-form">
+        <label>Image URL <input name="url" required></label>
+        <label>Alt Text <input name="alt" required></label>
+        <button type="submit">Add Image</button>
+      </form>
+      <div id="gallery-list"></div>
+    </div>
+  </div>
+  <script>
+    // --- Simple hardcoded login ---
+    const ADMIN_USER = 'admin';
+    const ADMIN_PASS = 'admin123';
+    function login() {
+      const u = document.getElementById('admin-username').value;
+      const p = document.getElementById('admin-password').value;
+      if (u === ADMIN_USER && p === ADMIN_PASS) {
+        document.getElementById('login-box').style.display = 'none';
+        document.getElementById('admin-panel').style.display = '';
+        loadAll();
+      } else {
+        document.getElementById('login-error').innerText = 'Invalid credentials';
+      }
+    }
+    function logout() {
+      document.getElementById('admin-panel').style.display = 'none';
+      document.getElementById('login-box').style.display = '';
+    }
+    // --- API helpers ---
+    const API = 'http://localhost:3001/api';
+    async function loadAll() {
+      loadSpeakers();
+      loadSchedule();
+      loadGallery();
+    }
+    // --- Speakers ---
+    async function loadSpeakers() {
+      const res = await fetch(`${API}/speakers`);
+      const speakers = await res.json();
+      const list = document.getElementById('speakers-list');
+      list.innerHTML = speakers.map(s => `<div class='item'><b>${s.name}</b> (${s.affiliation})<br>${s.title}<br><button onclick='deleteSpeaker(${s.id})'>Delete</button></div>`).join('');
+    }
+    document.getElementById('speaker-form').onsubmit = async e => {
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      const data = Object.fromEntries(fd.entries());
+      await fetch(`${API}/speakers`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+      e.target.reset();
+      loadSpeakers();
+    };
+    async function deleteSpeaker(id) {
+      await fetch(`${API}/speakers/${id}`, { method: 'DELETE' });
+      loadSpeakers();
+    }
+    // --- Schedule ---
+    async function loadSchedule() {
+      const res = await fetch(`${API}/schedule`);
+      const items = await res.json();
+      const list = document.getElementById('schedule-list');
+      list.innerHTML = items.map(i => `<div class='item'><b>${i.day}</b>: ${i.event} <button onclick='deleteSchedule(${i.id})'>Delete</button></div>`).join('');
+    }
+    document.getElementById('schedule-form').onsubmit = async e => {
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      const data = Object.fromEntries(fd.entries());
+      await fetch(`${API}/schedule`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+      e.target.reset();
+      loadSchedule();
+    };
+    async function deleteSchedule(id) {
+      await fetch(`${API}/schedule/${id}`, { method: 'DELETE' });
+      loadSchedule();
+    }
+    // --- Gallery ---
+    async function loadGallery() {
+      const res = await fetch(`${API}/gallery`);
+      const items = await res.json();
+      const list = document.getElementById('gallery-list');
+      list.innerHTML = items.map(i => `<div class='item'><img src='${i.url}' alt='${i.alt}' style='height:40px;vertical-align:middle;'> ${i.alt} <button onclick='deleteGallery(${i.id})'>Delete</button></div>`).join('');
+    }
+    document.getElementById('gallery-form').onsubmit = async e => {
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      const data = Object.fromEntries(fd.entries());
+      await fetch(`${API}/gallery`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+      e.target.reset();
+      loadGallery();
+    };
+    async function deleteGallery(id) {
+      await fetch(`${API}/gallery/${id}`, { method: 'DELETE' });
+      loadGallery();
+    }
+  </script>
+</body>
+</html> 

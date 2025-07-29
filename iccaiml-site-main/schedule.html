@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <base href="/iccaiml-site/">
+  <title>Schedule | ICCAIML</title>
+  <meta name="description" content="Conference Schedule for ICCAIML.">
+  <link rel="icon" href="assets/logo.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              DEFAULT: '#0a2342', // dark blue
+              dark: '#07172b',   // even deeper blue
+            },
+            secondary: {
+              DEFAULT: '#2ca6e0', // light blue
+            },
+            white: '#ffffff',
+          },
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-primary text-white">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-secondary shadow">
+    <nav class="container mx-auto flex items-center justify-between py-4 px-4">
+      <div class="flex items-center gap-2">
+        <img src="assets/logo.png" alt="ICCAIML Logo" class="h-10 w-10 object-contain">
+        <span class="font-bold text-xl tracking-tight text-primary">ICCAIML </span>
+      </div>
+      <ul class="hidden md:flex gap-6 font-medium">
+        <li><a href="index.html" class="hover:text-primary">Home</a></li>
+        <li><a href="about.html" class="hover:text-primary">About</a></li>
+        <li><a href="committee.html" class="hover:text-primary">Committee</a></li>
+        <li><a href="speakers.html" class="hover:text-primary">Speakers</a></li>
+        <li><a href="call-for-papers.html" class="hover:text-primary">Call for Papers</a></li>
+        <li><a href="registration.html" class="hover:text-primary">Registration</a></li>
+        <li><a href="schedule.html" class="hover:text-primary text-primary">Schedule</a></li>
+        <li><a href="contact.html" class="hover:text-primary">Contact</a></li>
+        <li><a href="gallery.html" class="hover:text-primary">Gallery</a></li>
+      </ul>
+      <button class="md:hidden p-2" aria-label="Open menu">
+        <svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </nav>
+  </header>
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-primary to-secondary py-12 text-center">
+    <div class="container mx-auto px-4">
+      <h1 class="text-4xl md:text-5xl font-extrabold mb-4 text-primary drop-shadow">Conference Schedule</h1>
+      <p class="text-lg md:text-xl mb-6 text-primary">ICCAIML 2023 - August 10-12, 2023</p>
+    </div>
+  </section>
+  <!-- Schedule Content -->
+  <section class="container mx-auto px-4 py-12">
+    <div class="flex flex-col md:flex-row justify-center gap-8" id="schedule-list">
+      <!-- Schedule will be loaded here by JS -->
+    </div>
+    <p class="mt-8 text-gray-700 text-center">Full schedule and session details will be announced soon.</p>
+  </section>
+  <script>
+    fetch('http://localhost:3001/api/schedule')
+      .then(res => res.json())
+      .then(items => {
+        const list = document.getElementById('schedule-list');
+        list.innerHTML = '';
+        items.forEach(i => {
+          const div = document.createElement('div');
+          div.className = 'bg-orange-50 rounded-lg p-6 flex-1 border-l-4 border-primary mb-4';
+          div.innerHTML = `<h3 class='font-semibold mb-2 text-primary'>${i.day}</h3><ul class='text-sm text-gray-700 list-disc list-inside'><li>${i.event}</li></ul>`;
+          list.appendChild(div);
+        });
+      });
+  </script>
+  <!-- Footer -->
+  <footer class="bg-primary text-white py-8 mt-12">
+    <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+      <div class="mb-4 md:mb-0">
+        <img src="assets/logo.png" alt="ICCAIML Logo" class="h-8 inline-block mr-2">
+        <span class="font-semibold">ICCAIML </span>
+      </div>
+      <div class="text-sm">&copy; ICCAIML. All rights reserved.</div>
+      <div class="flex gap-4 mt-2 md:mt-0">
+        <a href="contact.html" class="hover:underline">Contact</a>
+        <a href="https://maps.google.com" target="_blank" rel="noopener" class="hover:underline">Venue</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

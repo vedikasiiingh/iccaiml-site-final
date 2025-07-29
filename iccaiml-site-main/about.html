@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <base href="/iccaiml-site/">
+  <title>About | ICCAIML Conference</title>
+  <meta name="description" content="About the International Conference on Contemporary Advances in AI & ML - ICCAIML">
+  <link rel="icon" href="./assets/logo.png">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              DEFAULT: '#0a2342', // dark blue
+              dark: '#07172b',   // even deeper blue
+            },
+            secondary: {
+              DEFAULT: '#2ca6e0', // light blue
+            },
+            white: '#ffffff',
+          },
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-primary text-white">
+  
+  <!-- Sticky Header/Navbar -->
+  <header class="sticky top-0 z-50 bg-secondary shadow">
+    <nav class="container mx-auto flex items-center justify-between py-4 px-4">
+      <div class="flex items-center gap-2">
+        <img src="./assets/logo.png" alt="ICCAIML Logo" class="h-10 w-10 object-contain">
+        <span class="font-bold text-xl tracking-tight text-primary">ICCAIML</span>
+      </div>
+      <ul class="hidden md:flex gap-6 font-medium">
+        <li><a href="./index.html" class="hover:text-primary">Home</a></li>
+        <li><a href="./about.html" class="hover:text-primary text-primary">About</a></li>
+        <li><a href="./committee.html" class="hover:text-primary">Committee</a></li>
+        <li><a href="./speakers.html" class="hover:text-primary">Speakers</a></li>
+        <li><a href="./call-for-papers.html" class="hover:text-primary">Call for Papers</a></li>
+        <li><a href="./registration.html" class="hover:text-primary">Registration</a></li>
+        <li><a href="./schedule.html" class="hover:text-primary">Schedule</a></li>
+        <li><a href="./contact.html" class="hover:text-primary">Contact</a></li>
+      </ul>
+      <button class="md:hidden p-2" aria-label="Open menu">
+        <svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-primary to-secondary py-16 text-center">
+    <div class="container mx-auto px-4">
+      <h1 class="text-4xl md:text-5xl font-extrabold mb-4 text-primary drop-shadow">Bridges to the Future</h1>
+      <p class="text-lg md:text-xl mb-6 text-primary">About the International Conference on Contemporary Advances in AI & ML</p>
+    </div>
+  </section>
+
+  <!-- About Content -->
+  <section class="container mx-auto px-4 py-12 max-w-3xl">
+    <h2 class="text-2xl font-bold mb-4 text-primary">Our Mission</h2>
+    <p class="mb-6">Introduction As the world becomes increasingly interconnected, the need for secure and reliable communication systems becomes more important than ever. The ability to securely communicate and protect data is becoming increasingly difficult due to the emergence of cyber warfare and space computing. As such, it is becoming increasingly important to explore the various aspects of cyber warfare and space computing in order to ensure the security of communication systems. Therefore, we propose an International Conference on Cyber Warfare, Security & Space Computing to provide an opportunity for researchers, industry professionals and policy makers to explore the various aspects of cyber warfare and space computing and to exchange ideas and best practices. The International Conference on Cyber Warfare, Security & Space Computing will be of interest to researchers, industry professionals, policy makers and other stakeholders in the fields of cyber warfare, security, and space computing.</p>
+    <h2 class="text-2xl font-bold mb-4 text-primary">Why Attend?</h2>
+    <ul class="list-disc list-inside mb-6 text-gray-800">
+      <li>Engage with world-renowned speakers and experts</li>
+      <li>Participate in workshops, panels, and poster sessions</li>
+      <li>Showcase your research and connect with peers</li>
+      <li>Discover new trends and opportunities in AI & ML</li>
+    </ul>
+    <p class="text-gray-700">Stay tuned for more details about the conference program, keynote speakers, and special events.</p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-primary text-white py-8 mt-12">
+    <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+      <div class="mb-4 md:mb-0">
+        <img src="./assets/logo.png" alt="ICCAIML Logo" class="h-8 inline-block mr-2">
+        <span class="font-semibold">ICCAIML </span>
+      </div>
+      <div class="text-sm">&copy; ICCAIML. All rights reserved.</div>
+      <div class="flex gap-4 mt-2 md:mt-0">
+        <a href="contact.html" class="hover:underline">Contact</a>
+        <a href="https://maps.google.com" target="_blank" rel="noopener" class="hover:underline">Venue</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
