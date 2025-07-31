@@ -54,7 +54,7 @@
   <section class="bg-gradient-to-br from-primary to-secondary py-12 text-center">
     <div class="container mx-auto px-4">
       <h1 class="text-4xl md:text-5xl font-extrabold mb-4 text-primary drop-shadow">Conference Schedule</h1>
-      <p class="text-lg md:text-xl mb-6 text-primary">ICCAIML 2023 - August 10-12, 2023</p>
+      <p class="text-lg md:text-xl mb-6 text-white">ICCAIML 2023 - August 10-12, 2023</p>
     </div>
   </section>
   <!-- Schedule Content -->
@@ -62,7 +62,7 @@
     <div class="flex flex-col md:flex-row justify-center gap-8" id="schedule-list">
       <!-- Schedule will be loaded here by JS -->
     </div>
-    <p class="mt-8 text-gray-700 text-center">Full schedule and session details will be announced soon.</p>
+    <p class="mt-8 text-white text-center">Full schedule and session details will be announced soon.</p>
   </section>
   <script>
     fetch('http://localhost:3001/api/schedule')
@@ -73,7 +73,7 @@
         items.forEach(i => {
           const div = document.createElement('div');
           div.className = 'bg-orange-50 rounded-lg p-6 flex-1 border-l-4 border-primary mb-4';
-          div.innerHTML = `<h3 class='font-semibold mb-2 text-primary'>${i.day}</h3><ul class='text-sm text-gray-700 list-disc list-inside'><li>${i.event}</li></ul>`;
+          div.innerHTML = `<h3 class='font-semibold mb-2 text-primary'>${i.day}</h3><ul class='text-sm text-white list-disc list-inside'><li>${i.event}</li></ul>`;
           list.appendChild(div);
         });
       });

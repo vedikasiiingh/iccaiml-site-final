@@ -57,7 +57,7 @@
   <section class="bg-gradient-to-br from-primary to-secondary py-12 text-center">
     <div class="container mx-auto px-4">
       <h1 class="text-4xl md:text-5xl font-extrabold mb-4 text-primary drop-shadow">Keynote Speakers</h1>
-      <p class="text-lg md:text-xl mb-6 text-primary">Meet our distinguished speakers</p>
+      <p class="text-lg md:text-xl mb-6 text-white">Meet our distinguished speakers</p>
     </div>
   </section>
   <!-- Speakers Content -->
@@ -65,7 +65,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="speakers-list">
       <!-- Speakers will be loaded here by JS -->
     </div>
-    <p class="mt-8 text-gray-700 text-center">More speakers will be announced soon.</p>
+    <p class="mt-8 text-white text-center">More speakers will be announced soon.</p>
   </section>
   <script>
     function getImageUrl(url) {
@@ -81,8 +81,8 @@
             <img src="${getImageUrl(s.image)}" alt="${s.name}" class="h-24 w-24 rounded-full mb-4 object-cover">
             <h3 class="font-semibold text-lg text-primary">${s.name}</h3>
             <p class="text-sm text-primary mb-2">${s.affiliation}</p>
-            <p class="text-gray-700 text-center font-semibold mb-2">${s.title}</p>
-            <p class="text-gray-700 text-sm text-justify">${s.description}</p>
+            <p class="text-white text-center font-semibold mb-2">${s.title}</p>
+            <p class="text-white text-sm text-justify">${s.description}</p>
           </div>
         `).join('');
       });
