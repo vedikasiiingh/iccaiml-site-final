@@ -18,9 +18,16 @@ function getImageUrl(url) {
 }
 
 const app = express();
-const PORT = 3001;
+const PORT =  process.env.PORT || 3001;  
 
-app.use(cors());
+const corsOptions = {
+  origin: 'https://iccaiml-site-frontend.onrender.com',
+  methods: ['GET', 'POST', 'DELETE'],
+  allowedHeaders: ['Content-Type'],
+};
+
+app.use(cors(corsOptions));
+
 app.use(bodyParser.json());
 app.get('/admin', (req, res) => {
   res.sendFile(path.join(__dirname, 'admin.html'));
