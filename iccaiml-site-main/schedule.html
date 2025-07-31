@@ -65,7 +65,7 @@
     <p class="mt-8 text-white text-center">Full schedule and session details will be announced soon.</p>
   </section>
   <script>
-    fetch('http://localhost:3001/api/schedule')
+    fetch('https://iccaiml-site-backend.onrender.com/api/schedule')
       .then(res => res.json())
       .then(items => {
         const list = document.getElementById('schedule-list');

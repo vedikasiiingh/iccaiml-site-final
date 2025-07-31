@@ -82,7 +82,7 @@
       e.preventDefault();
       const fd = new FormData(this);
       const data = Object.fromEntries(fd.entries());
-      await fetch('http://localhost:3001/api/contacts', {
+      await fetch(' https://iccaiml-site-backend.onrender.com/api/contacts', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
